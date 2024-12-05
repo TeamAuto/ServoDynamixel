@@ -44,11 +44,7 @@ MachineState, ADSErreur = Etat_PLC
 if ADSErreur != 0 or MachineState != 5:
     print("Erreur")
 
-<<<<<<< HEAD
 NomServoList = ["ServoA", "ServoB", "ServoC", "ServoD", "ServoE", "ServoF", "ServoG", "ServoH", "ServoI", "ServoJ", "ServoK", "ServoL", "ServoM", "ServoN", "ServoO", "ServoP", "ServoQ", "ServoR", "ServoS", "ServoT"] # � modifier en fonction du nom que vous souhaitez donner a vos Servo, d�clarer chaque servo avec les memes nom dans le POU ServoDynamixel (ne pas mettre de chiffres dans les nom)
-=======
-NomServoList = ["ServoA", "ServoB", "ServoC", "ServoD", "ServoE", "ServoF", "ServoG", "ServoH", "ServoI", "ServoJ"] # � modifier en fonction du nom que vous souhaitez donner a vos Servo, d�clarer chaque servo avec les memes nom dans le POU ServoDynamixel (ne pas mettre de chiffres dans les nom)
->>>>>>> 376f80f7f5847789f71af35fb7ddf156b70b74d4
 ListValeurNom = plc.CreationVariableList("ServoDynamixel", NomServoList)
 Nom_ID, Nom_ModeRotation, Nom_PosMin, Nom_PosMax, Nom_PosInit, Nom_MoveInit, Nom_HomingONOFF, Nom_HomingBasHaut, Nom_CapteurHoming, Nom_VitesseHoming, Nom_ForceHoming, Nom_PositionApresHoming, Nom_ForceMax, Nom_ForceMaxAntihoraire, Nom_ForceDepassee, Nom_MarcheArriere, Nom_MoveRun, Nom_Prioritaire, Nom_PositionOrdre, Nom_Vitesse, Nom_Force, Nom_PositionReel, Nom_Position0, Nom_HomingDone, Nom_Etat, Nom_CodeErreur, Nom_Movement, Nom_EnCycle, Nom_PositionActuelle = ListValeurNom
 
@@ -328,9 +324,7 @@ while Val_EnCycle[0]:
                     if Val_ForceDepassee[i] == 1:
                        print(f"Servo {Val_ID[i]} arrêté")
                        Val_Etat = [50 for i in range(len(Nom_ID))]
-                       Val_Nom_Etat = plc.FusionNomValeur(Nom_Etat, Val_Etat)
-                       plc.Ecrit_Variable_List(Val_Nom_Etat)
-
+                       
                     elif Val_ForceDepassee[i] == 2 or Val_ForceDepassee[i] == 3:
                        Val_PositionOrdre[i] = PosArret[i] - Val_MarcheArriere[i]
                        Erreur = Servo.PositionGoal(Val_ID[i], Val_PositionOrdre[i])
@@ -338,12 +332,8 @@ while Val_EnCycle[0]:
                             print(f"Servo {Val_ID[i]} Retour")
                             if Val_ForceDepassee[i] == 2:
                                 Val_Etat = [40 for i in range(len(Nom_ID))]
-                                Val_Nom_Etat = plc.FusionNomValeur(Nom_Etat, Val_Etat)
-                                plc.Ecrit_Variable_List(Val_Nom_Etat)
                             elif Val_ForceDepassee[i] == 3:
                                 Val_Etat = [50 for i in range(len(Nom_ID))]
-                                Val_Nom_Etat = plc.FusionNomValeur(Nom_Etat, Val_Etat)
-                                plc.Ecrit_Variable_List(Val_Nom_Etat)
 
                     elif Val_ForceDepassee[i] == 4 or Val_ForceDepassee[i] == 5:
                         for U in range(20):
@@ -361,15 +351,15 @@ while Val_EnCycle[0]:
                             if Compteur >= 20:
                                 if Val_ForceDepassee[i] == 4:
                                     Val_Etat = [40 for i in range(len(Nom_ID))]
-                                    Val_Nom_Etat = plc.FusionNomValeur(Nom_Etat, Val_Etat)
-                                    plc.Ecrit_Variable_List(Val_Nom_Etat)
                                 elif Val_ForceDepassee[i] == 5:
                                     Val_Etat = [50 for i in range(len(Nom_ID))]
-                                    Val_Nom_Etat = plc.FusionNomValeur(Nom_Etat, Val_Etat)
-                                    plc.Ecrit_Variable_List(Val_Nom_Etat)
+                                Val_Nom_Etat = plc.FusionNomValeur(Nom_Etat, Val_Etat)
+                                plc.Ecrit_Variable_List(Val_Nom_Etat)
                                 Erreur = Servo.EcrireVitesse(Val_ID[i], Val_Vitesse[i])
                                 Compteur = 0
                                 break
+                    Val_Nom_Etat = plc.FusionNomValeur(Nom_Etat, Val_Etat)
+                    plc.Ecrit_Variable_List(Val_Nom_Etat)
     iCompteurTest = iCompteurTest +1
     #print (f"cycle : {iCompteurTest}")
 else:

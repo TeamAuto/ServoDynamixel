@@ -10,15 +10,12 @@
     Modif V7:
     ajout de gestion de couple en cycle avec plusieurs modes
 """
-<<<<<<< HEAD
 
 """
     pour une utilisation "normale" modifier les valeurs de :
         "BAUDRATE" (vitesse de communication) ligne 28
         "DeviceName" (port ou l'U2D2 est connecté) a la ligne 29 
 """
-=======
->>>>>>> 376f80f7f5847789f71af35fb7ddf156b70b74d4
 # -*- coding: utf-8 -*-
 
 from dynamixel_sdk import *
