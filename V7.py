@@ -44,7 +44,11 @@ MachineState, ADSErreur = Etat_PLC
 if ADSErreur != 0 or MachineState != 5:
     print("Erreur")
 
+<<<<<<< HEAD
 NomServoList = ["ServoA", "ServoB", "ServoC", "ServoD", "ServoE", "ServoF", "ServoG", "ServoH", "ServoI", "ServoJ", "ServoK", "ServoL", "ServoM", "ServoN", "ServoO", "ServoP", "ServoQ", "ServoR", "ServoS", "ServoT"] # � modifier en fonction du nom que vous souhaitez donner a vos Servo, d�clarer chaque servo avec les memes nom dans le POU ServoDynamixel (ne pas mettre de chiffres dans les nom)
+=======
+NomServoList = ["ServoA", "ServoB", "ServoC", "ServoD", "ServoE", "ServoF", "ServoG", "ServoH", "ServoI", "ServoJ"] # � modifier en fonction du nom que vous souhaitez donner a vos Servo, d�clarer chaque servo avec les memes nom dans le POU ServoDynamixel (ne pas mettre de chiffres dans les nom)
+>>>>>>> 376f80f7f5847789f71af35fb7ddf156b70b74d4
 ListValeurNom = plc.CreationVariableList("ServoDynamixel", NomServoList)
 Nom_ID, Nom_ModeRotation, Nom_PosMin, Nom_PosMax, Nom_PosInit, Nom_MoveInit, Nom_HomingONOFF, Nom_HomingBasHaut, Nom_CapteurHoming, Nom_VitesseHoming, Nom_ForceHoming, Nom_PositionApresHoming, Nom_ForceMax, Nom_ForceMaxAntihoraire, Nom_ForceDepassee, Nom_MarcheArriere, Nom_MoveRun, Nom_Prioritaire, Nom_PositionOrdre, Nom_Vitesse, Nom_Force, Nom_PositionReel, Nom_Position0, Nom_HomingDone, Nom_Etat, Nom_CodeErreur, Nom_Movement, Nom_EnCycle, Nom_PositionActuelle = ListValeurNom
 
