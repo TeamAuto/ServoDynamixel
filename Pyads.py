@@ -10,6 +10,10 @@
     Modif V7:
     ajout de gestion de couple en cycle avec plusieurs modes
 """
+
+"""
+    Ce fichier ne nécessite aucune modification pour une utilisation normale.
+"""
 import pyads
 import time
 import re
